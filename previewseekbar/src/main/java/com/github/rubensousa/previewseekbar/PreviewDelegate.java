@@ -73,13 +73,20 @@ public class PreviewDelegate implements PreviewView.OnPreviewChangeListener {
         morphView.setVisibility(View.INVISIBLE);
         previewFrameLayout.setVisibility(View.INVISIBLE);
         previewFrameView.setVisibility(View.INVISIBLE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            animator = new PreviewAnimatorLollipopImpl(previewParent, previewView, morphView,
-                    previewFrameLayout, previewFrameView);
-        } else {
-            animator = new PreviewAnimatorImpl(previewParent, previewView, morphView,
-                    previewFrameLayout, previewFrameView);
-        }
+
+        // Disable preview popup animation
+        // TODO: add layout option for this
+        animator = new PreviewAnimatorImpl(previewParent, previewView, morphView,
+                previewFrameLayout, previewFrameView);        
+
+        // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        //     animator = new PreviewAnimatorLollipopImpl(previewParent, previewView, morphView,
+        //             previewFrameLayout, previewFrameView);
+        // } else {
+        //     animator = new PreviewAnimatorImpl(previewParent, previewView, morphView,
+        //             previewFrameLayout, previewFrameView);
+        // }
+        
         setup = true;
     }
 
